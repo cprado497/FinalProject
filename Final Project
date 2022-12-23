@@ -1,7 +1,7 @@
-import random
-print("Welcome to rock, paper, scissors")
+import random #this allows the copter to make random choices 
+print("Welcome to rock, paper, scissors") #welcome message for the user 
 print("Do you want to play?")
-possible_action = input("yes or no: ")
+possible_action = input("yes or no: ") #this will take user input 
 if possible_action == "yes" :
     print("ok, let's play!")
 elif possible_action == "no":
@@ -9,7 +9,7 @@ elif possible_action == "no":
     exit("See you next time!")
 #start game
 user_action = input("enter choice: 'r' for rock, 's' for scissors, 'p' for paper")
-computer_action = random.choice(['r', 's', 'p'])
+computer_action = random.choice(['r', 's', 'p']) #computer will have to randomly select one to play against the user 
 #options for input
 r = 'rock'
 s = 'scissors'
