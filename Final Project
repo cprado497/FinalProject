@@ -1,0 +1,43 @@
+def MadLibs(filename):
+    print("Want to play MadLibs?")
+    answer = input("Yes or No: ")
+    if answer == "yes":
+        openfile = open (filename) #this opens the file
+        readfile = openfile.read() #this reads through file
+        madlibs_txt = readfile.split() #splits file into a list of strings
+        user_input = list() #we want a list of user_input
+        for word in madlibs_txt:
+            if word == "<noun>":
+                user_input.append(input("please input a noun: ")) #adds this input into list
+            elif word == "<plural_noun>":
+                user_input.append(input("please input a plural noun: "))
+            elif word == "<place>":
+                user_input.append(input("please input a place: "))
+            elif word == "<adjective>":
+                user_input.append(input("please input an adjective: "))
+        # print(list(user_input))
+        newlist = list() #we want a new list where words will be replaced
+        count = 0 #we want to start at count 0 of the user_input list to go in order
+        for word in madlibs_txt:
+            if word == "<noun>":
+                newlist.append(user_input[count]) #this replaces the special word with user_input
+                count = count + 1 #it means to go to next object in list after the one before has been used
+            elif word == "<plural_noun>":
+                newlist.append(user_input[count])
+                count = count + 1
+            elif word == "<place>":
+                newlist.append(user_input[count])
+                count = count + 1
+            elif word == "<adjective>":
+                newlist.append(user_input[count])
+                count = count + 1
+            else:
+                newlist.append(word) #this just prints original word
+        answer = ""
+        for word in newlist:
+            answer = answer + " " + word #we print the text in words, not strings, with spaces
+        print("Your madlibs prose:" + answer)
+        print(exit("Thanks for playing!"))
+    if answer == "no":
+        print(exit("Ok, see you next time!"))
+MadLibs('madlibs2.txt')
