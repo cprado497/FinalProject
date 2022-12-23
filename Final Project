@@ -1,43 +1,36 @@
-def MadLibs(filename):
-    print("Want to play MadLibs?")
-    answer = input("Yes or No: ")
-    if answer == "yes":
-        openfile = open (filename) #this opens the file
-        readfile = openfile.read() #this reads through file
-        madlibs_txt = readfile.split() #splits file into a list of strings
-        user_input = list() #we want a list of user_input
-        for word in madlibs_txt:
-            if word == "<noun>":
-                user_input.append(input("please input a noun: ")) #adds this input into list
-            elif word == "<plural_noun>":
-                user_input.append(input("please input a plural noun: "))
-            elif word == "<place>":
-                user_input.append(input("please input a place: "))
-            elif word == "<adjective>":
-                user_input.append(input("please input an adjective: "))
-        # print(list(user_input))
-        newlist = list() #we want a new list where words will be replaced
-        count = 0 #we want to start at count 0 of the user_input list to go in order
-        for word in madlibs_txt:
-            if word == "<noun>":
-                newlist.append(user_input[count]) #this replaces the special word with user_input
-                count = count + 1 #it means to go to next object in list after the one before has been used
-            elif word == "<plural_noun>":
-                newlist.append(user_input[count])
-                count = count + 1
-            elif word == "<place>":
-                newlist.append(user_input[count])
-                count = count + 1
-            elif word == "<adjective>":
-                newlist.append(user_input[count])
-                count = count + 1
-            else:
-                newlist.append(word) #this just prints original word
-        answer = ""
-        for word in newlist:
-            answer = answer + " " + word #we print the text in words, not strings, with spaces
-        print("Your madlibs prose:" + answer)
-        print(exit("Thanks for playing!"))
-    if answer == "no":
-        print(exit("Ok, see you next time!"))
-MadLibs('madlibs2.txt')
+import random
+print("Welcome to rock, paper, scissors")
+print("Do you want to play?")
+possible_action = input("yes or no: ")
+if possible_action == "yes" :
+    print("ok, let's play!")
+elif possible_action == "no":
+    print("ok, goodbye!")
+    exit("See you next time!")
+#start game
+user_action = input("enter choice: 'r' for rock, 's' for scissors, 'p' for paper")
+computer_action = random.choice(['r', 's', 'p'])
+#options for input
+r = 'rock'
+s = 'scissors'
+p = 'paper'
+#check user input
+#have computer_action make random choice
+if user_action == computer_action:
+    print("Computer also chose that, it's a tie!")
+elif user_action == 'p':
+    if computer_action =='r':
+        print("Computer chose rock. Paper beats rock, you win!")
+    else:
+        print("Computer chose scissors. Scissors beats paper, you lose!")
+elif user_action == 'r':
+    if computer_action == 's':
+        print("Computer chose scissors. Rock beats scissors, you win!")
+    else:
+        print("Computer chose paper. Paper beats rock, you lose!")
+elif user_action == 's':
+    if computer_action == 'p':
+        print("Computer chose paper. Scissors beats paper, you win!")
+    else:
+        print("Computer chose rock. Rock beats scissors, you lose!")
+print("Thanks for playing!")
